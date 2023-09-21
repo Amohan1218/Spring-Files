@@ -1,0 +1,40 @@
+CREATE TABLE ms_exam_orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID VARCHAR(5),
+    OrderDate VARCHAR(10),
+    ProductID VARCHAR(5),
+    Quantity INT,
+    UnitPrice NUMERIC(8, 2),
+    TotalAmount NUMERIC(10, 2)
+);
+INSERT INTO ms_exam_orders (OrderID, CustomerID, OrderDate, ProductID, Quantity, UnitPrice, TotalAmount)
+VALUES
+    (1001, 'C001', '2023-09-21', 'P001', 5, 25.00, 125.00),
+    (1002, 'C002', '2023-09-22', 'P002', 3, 10.50, 31.50),
+    (1003, 'C003', '2023-09-22', 'P003', 2, 50.00, 100.00),
+    (1004, 'C004', '2023-09-23', 'P001', 4, 25.00, 100.00),
+    (1005, 'C002', '2023-09-23', 'P004', 1, 75.00, 75.00),
+    (1006, 'C005', '2023-09-24', 'P002', 2, 10.50, 21.00),
+    (1007, 'C001', '2023-09-24', 'P005', 3, 15.75, 47.25);
+
+CREATE TABLE ms_exam_products (
+    ProductID VARCHAR(5) PRIMARY KEY,
+    ProductName VARCHAR(255),
+    Category VARCHAR(50),
+    Description VARCHAR(255),
+    UnitPrice NUMERIC(8, 2),
+    StockQuantity INT,
+    SupplierID VARCHAR(5)
+);
+INSERT INTO ms_exam_products (ProductID, ProductName, Category, Description, UnitPrice, StockQuantity, SupplierID)
+VALUES
+    ('P001', 'Laptop', 'Electronics', 'High-performance', 800.00, 50, 'S001'),
+    ('P002', 'Smartphone', 'Electronics', 'Latest model', 600.00, 75, 'S002'),
+    ('P003', 'Camera', 'Electronics', 'DSLR Camera', 1200.00, 30, 'S003'),
+    ('P004', 'Headphones', 'Electronics', 'Noise-cancelling', 100.00, 100, 'S004'),
+    ('P005', 'Coffee Maker', 'Appliances', 'Automatic drip', 50.00, 45, 'S005'),
+    ('P006', 'Microwave', 'Appliances', '1000W, Countertop', 150.00, 60, 'S006'),
+    ('P007', 'Blender', 'Appliances', 'High-speed blending', 80.00, 55, 'S007');
+
+select * from ms_exam_orders
+select * from ms_exam_products
