@@ -1,7 +1,0 @@
-com\springboot\bootexam\controller\OrderController.class
-com\springboot\bootexam\model\Products.class
-com\springboot\bootexam\model\Orders.class
-com\springboot\bootexam\model\ProductRowMapper.class
-com\springboot\bootexam\BootexamApplication.class
-com\springboot\bootexam\model\OrderRowMapper.class
-com\springboot\bootexam\repository\OrdersRepository.class
