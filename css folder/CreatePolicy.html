@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Insurance Policy Record</title>
+    
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Add custom CSS (create a separate CSS file for your styles) -->
+    <link rel="stylesheet" type="text/css" href="custom.css">
+</head>
+
+<body><br>
+    <h2 class="text-center">Insert Insurance Policy Record</h2><br>
+    <form th:action="@{/insertPolicy}" th:object="${policy}" method="post"></form>
+    
+    <div class="container">
+        <table class="table">
+            <tr>
+                <td><label for="iplcCustId">Customer ID:</label></td>
+                <td><input class="form-control" type="number" id="iplcCustId" th:field="*{iplc_cust_id}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcCdate">Policy Creation Date:</label></td>
+                <td><input class="form-control" type="date" id="iplcCdate" th:field="*{iplc_cdate}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcSumAssured">Sum Assured:</label></td>
+                <td><input class="form-control" type="number" step="0.01" id="iplcSumAssured" th:field="*{iplc_sum_assured}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcApplicableDate">Applicable Date:</label></td>
+                <td><input class="form-control" type="date" id="iplcApplicableDate" th:field="*{iplc_applicable_date}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcNomInsured">No of Members Insured:</label></td>
+                <td><input class="form-control" type="number" id="iplcNomInsured" th:field="*{iplc_nom_insured}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcInspId">Insurance Package ID:</label></td>
+                <td><input class="form-control" type="number" id="iplcInspId" th:field="*{iplc_insp_id}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcYrlyPremAmount">Yearly Premium Amount:</label></td>
+                <td><input class="form-control" type="number" step="0.01" id="iplcYrlyPremAmount" th:field="*{iplc_yrly_prem_amount}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcPaymodeCount">Payment Mode Count:</label></td>
+                <td><input class="form-control" type="number" id="iplcPaymodeCount" th:field="*{iplc_paymode_count}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcExpdate">Expiration Date:</label></td>
+                <td><input class="form-control" type="date" id="iplcExpdate" th:field="*{iplc_expdate}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcAgntId">Agent ID:</label></td>
+                <td><input class="form-control" type="number" id="iplcAgntId" th:field="*{iplc_agnt_id}" required></td>
+            </tr>
+            <tr>
+                <td><label for="iplcStatus">Status:</label></td>
+                <td><input class="form-control" type="text" id="iplcStatus" th:field="*{iplc_status}" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class="btn btn-primary" type="submit" value="Insert Policy Record"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
