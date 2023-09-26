@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insurance Packages</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+	
+	<style>
+		.table th,
+		.table td {
+			text-align: left;
+		}
+
+		.btn-primary {
+			background-color: #007BFF;
+		}
+		body{
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Available Packages</h1><br>
+	<table id="insurancePackageTable" class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>Range Start</th>
+				<th>Range End</th>
+				<th>Age Limit</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Data will be displayed here -->
+		</tbody>
+	</table>
+
+	<script>
+		$(document).ready(function () {
+			$.ajax({
+				url: '/getAllPackages', // Replace with your server's API endpoint
+				type: 'GET',
+				dataType: 'json',
+				success: function (data) {
+					displayDataInTable(data);
+					$('#insurancePackageTable').DataTable(); // Initialize DataTables
+				},
+				error: function () {
+					console.error('Failed to fetch data');
+				}
+			});
+		});
+
+		function displayDataInTable(data) {
+			var tableBody = $('#insurancePackageTable tbody');
+			tableBody.empty();
+
+			for (var i = 0; i < data.length; i++) {
+				var row = $('<tr>');
+				row.append($('<td>').text(data[i].inspId));
+				row.append($('<td>').text(data[i].inspTitle));
+				row.append($('<td>').text(data[i].inspDesc));
+				row.append($('<td>').text(data[i].inspStatus));
+				row.append($('<td>').text(data[i].inspRangeStart));
+				row.append($('<td>').text(data[i].inspRangeEnd));
+				row.append($('<td>').text(data[i].inspAgeLimitStart + " - " + data[i].inspAgeLimitEnd));
+				var applyButton = $('<button class="btn btn-primary">Apply</button>');
+				row.append($('<td>').append(applyButton));
+				tableBody.append(row);
+			}
+		}
+
+	</script>
+</body>
+
+</html>
